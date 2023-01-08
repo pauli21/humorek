@@ -3,17 +3,25 @@
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li class="active">
-                                 <a href="index.html">Home</a>
+                                 <a href="/">Home</a>
                               </li>
                               <li>
-                                 <a href="addImage.html">Add image</a>
+                                 <a href="/add/image">Add image</a>
+                              </li>
+
+                              @auth
+                              <li>
+                                <a href="/logout">Logout</a>
+                              </li>
+                              @endauth
+                              @guest
+                              <li>
+                                 <a href="/login">Login</a>
                               </li>
                               <li>
-                                 <a href="#">Login</a>
+                                 <a href="/register">Register</a>
                               </li>
-                              <li>
-                                 <a href="#">Register</a>
-                              </li>
+                              @endguest
                               <li>
                                  <a href="#"><img src="/images/search_icon.png" alt="#" /></a>
                               </li>

@@ -15,9 +15,10 @@ use App\Http\Controllers\LoginController;
 */
 
 
-Route::get('/humorek.pl', [ImageController::class, 'index']);
-Route::get('humorek.pl/imageshow/{image}', [ImageController::class, 'showImage']);
-Route::get('humorek.pl/login', [LoginController::class, 'showLoginForm']);
-//Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/', [ImageController::class, 'index']);
+Route::get('/image/show/{image}', [ImageController::class, 'showImage']);
+Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 /*Route::get('/add/show/{image}', [ImageController::class, 'addImage']); */
