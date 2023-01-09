@@ -11,7 +11,7 @@
         @csrf
             <fieldset>
                 <div class="field">
-                    <input type="email" name="email" placeholder="email" required="" />
+                    <input type="email" name="email" placeholder="email" required="" value="{{old("email")}}"/>
                 </div>
                 <div class="field">
                     <input type="password" name="password" placeholder="hasło" required="" />

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +19,13 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [ImageController::class, 'index']);
 Route::get('/image/show/{image}', [ImageController::class, 'showImage']);
+
 Route::get('/login', [LoginController::class, 'showLoginForm']);
 Route::post('/login', [LoginController::class, 'authenticate']);
+
 Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'showRegisterForm']);
+Route::post('/register', [RegisterController::class, 'register']);
 
 /*Route::get('/add/show/{image}', [ImageController::class, 'addImage']); */

@@ -10,12 +10,13 @@ class LoginController extends Controller
 {
 
     public function authenticate(Request $request)
-    {
+    {   //przekazywane dane oraz ich funkcjonalności/
         $credentials = $request->validate([
+        //walidacje -wymagania pól
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
- 
+        //Jeżeli poprawne logowanie sprzekieruj na stronę główną/
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
