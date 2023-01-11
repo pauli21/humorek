@@ -39,14 +39,16 @@
          <!-- header inner -->
          <div class="container-fluid">
             <div class="row">
-               <div class="col-lg-3 logo_section">
+               <div class="col-lg-6 logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="#">Śmieszne obrazki</a> </div>
+                        
+                        <div class="logo"> <a href="#"><img src="/images/emotik.png" width="100" height="100" alt="#" />Funny images </a> </div>
+                        
                      </div>
                   </div>
                </div>
-               <div class="col-lg-9">
+               <div class="col-lg-6">
                     @include('menu')
                </div>
             </div>

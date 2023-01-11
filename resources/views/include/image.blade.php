@@ -13,7 +13,7 @@
                <div class="col-md-12">
                <!--przekazywanie ścieżki obrazka do widoku,
                alt wyświetli tytuł jeżeli wystąpi bład załadowania obrazka-->
-                  <img class="mx-auto" style="width:500px; display:block;" src="{{$image->file}}" alt="{{$image->name}}" />
+                  <img class="mx-auto" style="width:500px; display:block;" src="{{asset("storage/".$image->file)}}" alt="{{$image->name}}" />
                </div>
             </div>
             <div class="row">

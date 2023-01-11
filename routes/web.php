@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ImageAddController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'showRegisterForm']);
 Route::post('/register', [RegisterController::class, 'register']);
 
-/*Route::get('/add/show/{image}', [ImageController::class, 'addImage']); */
+Route::get('/image/add', [ImageAddController::class, 'showAddImageForm'])->middleware('auth');
+Route::post('/image/add', [ImageAddController::class, 'addImage'])->middleware('auth');
+
+

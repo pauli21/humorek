@@ -7,12 +7,11 @@ use App\Models\Image;
 
 class ImageController extends Controller
 {
+    //zwrócenie obrazków jako listy
     public function index()
     {
        $images = Image::paginate(2);
-        return view ('image.list', ['images' => $images]);
-        
-        
+        return view ('image.list', ['images' => $images]);   
     }
     public function showImage(Image $image)
     {

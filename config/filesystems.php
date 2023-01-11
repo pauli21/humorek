@@ -37,6 +37,7 @@ return [
         ],
 
         'public' => [
+        //sposób zapisu
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
