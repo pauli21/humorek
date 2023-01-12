@@ -9,18 +9,18 @@ use App\Models\User;
 class RegisterController extends Controller
 {
     public function register(Request $request)
-    {
+    {   //walidacje pól -> wymagania
         $credentials = $request->validate([
             'email' => ['required', 'email', 'unique:users'],
             'name' => ['required','min:3', 'max:15', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:8'],
             'password_confirmation' => ['required'],
         ]);
-
+        //tworzenie usera z wymaganiami
         $user = User::create($credentials);
-
+        //zalogowanie użytkownika po rejestracji
         auth()->login($user);
-
+        //jeżeli sukces przekieruj na stronę główną
         return redirect('/')->with('success', "Account successfully registered.");
 
     }

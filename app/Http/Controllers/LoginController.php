@@ -25,7 +25,7 @@ class LoginController extends Controller
  
             return redirect()->intended('/');
         }
- 
+        //jeżeli niepoprawne logowanie wyświetl błąd
         return back()->withErrors([
             'email' => 'Niepoprawny login lub hasło',
         ])->onlyInput('email');
@@ -38,7 +38,7 @@ class LoginController extends Controller
     }
 
 
-    //wylogowanie/
+    //wylogowanie
     public function logout(Request $request)
     {
         Auth::logout();

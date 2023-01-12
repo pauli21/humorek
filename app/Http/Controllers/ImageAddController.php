@@ -15,15 +15,15 @@ class ImageAddController extends Controller
     public function addImage(Request $request)
     {
         $credentials = $request->validate([
-            'name' => ['required', 'string', 'min:3', 'max:15'],
+            'name' => ['required', 'string', 'min:3', 'max:100'],
             'file' => ['required','file'],
             ]);
 
 
-        //if ($request->hasFile('file')) {
-
+            //przekazanie ścieżki do folderu public w którym zapisują się te obrazki
             $path = $request->file('file')->store('','public');
 
+            //utwoerzenie zmiennej $image do przekazania tworzenia nowego zdjęcia w bazie danych 
             $image = new Image([
                "name" => $request->get('name'),
                "file" => $path,
@@ -33,10 +33,12 @@ class ImageAddController extends Controller
             $image->save();
 
 
-         //}
 
+
+    //jeżeli obrazek się dodał przkieruje na stronę z tym obrazkiem
         return redirect('/image/show/'.$image->id)->with('success', "Upload successfully.");
     }
+	
 
 
     

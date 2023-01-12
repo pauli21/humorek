@@ -7,10 +7,10 @@ use App\Models\Image;
 
 class ImageController extends Controller
 {
-    //zwrócenie obrazków jako listy
+    //zwrócenie boksów z obrazkami jako listy 10 obrazków na stronie
     public function index()
     {
-       $images = Image::paginate(2);
+       $images = Image::paginate(10);
         return view ('image.list', ['images' => $images]);   
     }
     public function showImage(Image $image)
@@ -18,7 +18,7 @@ class ImageController extends Controller
          return view ('image.show', ['image' => $image]);
     }
 
-
+    
     public function addImage(Image $image)
     {
          return view ('image.show');

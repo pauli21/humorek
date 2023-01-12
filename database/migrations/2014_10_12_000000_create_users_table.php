@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        Tworzenie usera w bazie danych
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -30,6 +31,7 @@ return new class extends Migration
      *
      * @return void
      */
+     
     public function down()
     {
         Schema::dropIfExists('users');

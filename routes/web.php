@@ -5,6 +5,9 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ImageAddController;
+use App\Http\Controllers\VoteController;
+use App\Http\Controllers\ImageRemoveController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +20,32 @@ use App\Http\Controllers\ImageAddController;
 |
 */
 
-
+//strona główna
 Route::get('/', [ImageController::class, 'index']);
+
+//pokazanie boksa z obrazkiem
 Route::get('/image/show/{image}', [ImageController::class, 'showImage']);
 
-Route::get('/login', [LoginController::class, 'showLoginForm']);
+//LOGOWANIEpokazanie formularza w get oraz metoda post wysyłająca dane do bazy
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login ');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
+//WYLOGOWANIE
 Route::get('/logout', [LoginController::class, 'logout']);
 
+//REJESTRACJA pokazanie formularza w get oraz metoda post wysyłająca dane do bazy 
 Route::get('/register', [RegisterController::class, 'showRegisterForm']);
 Route::post('/register', [RegisterController::class, 'register']);
 
+//DODANIE OBRAZKA
 Route::get('/image/add', [ImageAddController::class, 'showAddImageForm'])->middleware('auth');
 Route::post('/image/add', [ImageAddController::class, 'addImage'])->middleware('auth');
+
+//ODDANIE OGŁOSU
+Route::post('/image/vote', [VoteController::class, 'addVote'])->middleware(['auth', 'canUserVote']);
+
+//DELETE
+Route::post('/image/remove', [ImageRemoveController::class, 'removeImage'])->middleware(['auth', 'canUserRemoveImage']);
+
 
 

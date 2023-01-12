@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\bootstrap",
-    "\\bootstrap\\cache",
-    "\\database",
-    "\\database\\migrations",
     "\\public",
-    "\\public\\images",
     "\\resources",
     "\\resources\\views",
-    "\\resources\\views\\user"
+    "\\resources\\views\\include",
+    "\\resources\\views\\layout",
+    "\\resources\\views\\user",
+    "\\storage",
+    "\\storage\\app",
+    "\\storage\\app\\public"
   ],
-  "SelectedNode": "\\routes\\web.php",
+  "SelectedNode": "\\app\\Http\\Controllers\\RegisterController.php",
   "PreviewInSolutionExplorer": false
 }

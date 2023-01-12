@@ -53,9 +53,16 @@
                </div>
             </div>
          </div>
+
          <!-- end header inner -->
       </header>
       <!-- end header -->
+      @error('success')
+        <div class="alert alert-success">{{$message}}</div>
+      @enderror
+      @error('error')
+        <div class="alert alert-danger">{{$message}}</div>
+      @enderror
         @yield('content')
        
       <!-- footer -->
