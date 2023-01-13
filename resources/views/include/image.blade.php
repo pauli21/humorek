@@ -12,13 +12,17 @@
                </div>
             </div>
             <div class="row">
+            </div>
+            <div class="row">
                <div class="col-md-12">
                <!--przekazywanie ścieżki obrazka do widoku,
                alt wyświetli tytuł jeżeli wystąpi bład załadowania obrazka-->
-                  <img class="mx-auto" style="width:500px; display:block;" src="{{asset("storage/".$image->file)}}" alt="{{$image->name}}" />
+                  <img class="mx-auto" style="width:700px; display:block;" src="{{asset("storage/".$image->file)}}" alt="{{$image->name}}" />
                </div>
             </div>
             <!--ŁAPKA W GÓRĘ-->
+        <div class="section layout_padding">
+         <div class="container">
             <div class="row">
                <div class="col-md-6">
                     <div class="center">
@@ -32,6 +36,7 @@
                         </form>
                     </div>
                </div>
+         
                <!--ŁAPKA W DÓŁ-->
                <div class="col-md-6">
                     <div class="center">
@@ -45,13 +50,13 @@
                         </form>
                     </div>
                </div>
-
+            </div>
             </div>
             <!--PRZYCISK DELETE-->
             @auth
             @if(auth()->user()->id==1 or auth()->user()->id==$image->user_id)
                 <div class="row">
-                    <button onclick="document.getElementById('id01').style.display='block'">Delete</button>
+                    <button onclick="document.getElementById('id01').style.display='block'" style="center">Delete</button>
 
                     <div id="id01" class="modal">
                           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -73,4 +78,5 @@
             @endauth
             </div>
           </div>
+         </div>
       </div>
