@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Models\Image;
 
-class CanUserRemoveImage
+class CanUserAddImage
 {
     /**
      * Handle an incoming request.
@@ -17,20 +17,9 @@ class CanUserRemoveImage
      */
     public function handle(Request $request, Closure $next)
     {
-        //znalezienie zdjęcia w bazie danych
-        $image_id=$request->get('image');
-        $image=Image::find($image_id);
-        //sprawdzamy czy to moderator i czy zdjęcie należy do niego
-        if ($request->user()->isModerator() && $request->user()->id==$image->user_id)
-        {
+        if ($request->user()->isAdmin() || $request->user()->isModerator()) {
+
             return $next($request);
-  
-        }
-        //sprawdzenie czy to admin
-        if ($request->user()->isAdmin())
-        {
-            return $next($request);
-  
         }
 
         return back()->withErrors([

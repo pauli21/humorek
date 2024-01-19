@@ -54,26 +54,29 @@
             </div>
             <!--PRZYCISK DELETE-->
             @auth
-            @if(auth()->user()->id==1 or auth()->user()->id==$image->user_id)
-                <div class="row">
-                    <button onclick="document.getElementById('id01').style.display='block'" style="center">Delete</button>
+            @if(auth()->user()->isAdmin() or (auth()->user()->isModerator() and auth()->user()->id==$image->user_id))
+                <div class="col-md-12" >
+                    <div class="center">
 
-                    <div id="id01" class="modal">
-                          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                              <form class="modal-content" method="post" action="/image/remove">
-                                    @csrf
-                                        <input type="hidden" name="image" value="{{ $image->id }}">
-                                            <div class="container">
-                                              <h1>Delete Account</h1>
-                                              <p>Are you sure you want to delete your picture?</p>
+                        <button onclick="document.getElementById('id01').style.display='block'" style="center">Delete</button>
 
-                                          <div class="clearfix">
-                                            <button type="button" class="cancelbtn">Cancel</button>
-                                            <button type="submit" class="deletebtn">Delete</button>
-                                          </div>
-                                       </div>
-                              </form>
-                </div>
+                        <div id="id01" class="modal">
+                              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                  <form class="modal-content" method="post" action="/image/remove">
+                                        @csrf
+                                            <input type="hidden" name="image" value="{{ $image->id }}">
+                                                <div class="container">
+                                                  <h1>Delete Account</h1>
+                                                  <p>Are you sure you want to delete your picture?</p>
+
+                                              <div class="clearfix">
+                                                <button type="button" class="cancelbtn">Cancel</button>
+                                                <button type="submit" class="deletebtn">Delete</button>
+                                              </div>
+                                           </div>
+                                  </form>
+                        </div>
+                    </div>
             @endif
             @endauth
             </div>

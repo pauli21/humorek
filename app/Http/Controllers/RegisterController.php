@@ -13,7 +13,7 @@ class RegisterController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email', 'unique:users'],
             'name' => ['required','min:3', 'max:15', 'unique:users'],
-            'password' => ['required', 'confirmed', 'min:8'],
+            'password' => ['required', 'min:8', 'regex:/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 'confirmed'],
             'password_confirmation' => ['required'],
         ]);
         //tworzenie usera z wymaganiami

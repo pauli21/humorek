@@ -27,7 +27,7 @@ Route::get('/', [ImageController::class, 'index']);
 Route::get('/image/show/{image}', [ImageController::class, 'showImage']);
 
 //LOGOWANIEpokazanie formularza w get oraz metoda post wysyłająca dane do bazy
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login ');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 //WYLOGOWANIE
@@ -35,11 +35,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 //REJESTRACJA pokazanie formularza w get oraz metoda post wysyłająca dane do bazy 
 Route::get('/register', [RegisterController::class, 'showRegisterForm']);
-Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/register', [RegisterController::class, 'register'])->middleware(['checkEmailExistence']);
 
 //DODANIE OBRAZKA
-Route::get('/image/add', [ImageAddController::class, 'showAddImageForm'])->middleware('auth');
-Route::post('/image/add', [ImageAddController::class, 'addImage'])->middleware('auth');
+Route::get('/image/add', [ImageAddController::class, 'showAddImageForm'])->middleware(['auth', 'canUserAddImage']);
+Route::post('/image/add', [ImageAddController::class, 'addImage'])->middleware(['auth', 'canUserAddImage']);
 
 //ODDANIE OGŁOSU
 Route::post('/image/vote', [VoteController::class, 'addVote'])->middleware(['auth', 'canUserVote']);

@@ -65,5 +65,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'canUserVote' => \App\Http\Middleware\CanUserVote::class,
         'canUserRemoveImage' => \App\Http\Middleware\CanUserRemoveImage::class,
+        'canUserAddImage' => \App\Http\Middleware\CanUserAddImage::class,
+        'checkEmailExistence' => \App\Http\Middleware\CheckEmailExistence::class,
+
     ];
 }

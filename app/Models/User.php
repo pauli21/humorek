@@ -43,11 +43,22 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($password);
     }
-    //zablokowanie dodawania więcej niż jednej oceny
+    //zablokowanie dodawania więcej niż jednej oceny do obrazka
     public function hasVoted($image_id)
     {
         return $this->votes->where('image_id', $image_id)->count()>=1;
     }
-
-
+    //sprawdzenie w bazie danych czy to admin
+    public function isAdmin()
+    {
+        return $this->role==='admin';
+    }
+    public function isModerator()
+    {
+        return $this->role==='moderator';
+    }
+    public function isUser()
+    {
+        return $this->role==='user';
+    }
 }
